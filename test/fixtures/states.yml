@@ -1,0 +1,18 @@
+# == Schema Information
+#
+# Table name: states
+#
+#  id        :integer          not null, primary key
+#  ticket_id :integer
+#  accepted  :boolean
+#  submitted :boolean
+#  assigned  :boolean
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  references: 
+
+two:
+  references: 

@@ -1,6 +1,6 @@
 class TicketsController < ApplicationController
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
-  before_actions :authenticate_user!
+  before_action :authenticate_user!
 
   # GET /tickets
   # GET /tickets.json
@@ -61,6 +61,8 @@ class TicketsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  
 
   private
     # Use callbacks to share common setup or constraints between actions.

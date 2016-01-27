@@ -17,8 +17,13 @@
 
 <p>
   <strong>User:</strong>
-  <%= @ticket.user %>
+  <%= @ticket.user.name %>
 </p>
+<p>
+  <strong>State</strong>
+  <%= @ticket.state %>
+</p>
+
 
 <%= link_to 'Edit', edit_ticket_path(@ticket) %> |
 <%= link_to 'Back', tickets_path %>
