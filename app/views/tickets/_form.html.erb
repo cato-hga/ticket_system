@@ -21,11 +21,15 @@
   </div>
   <div class="field">
     <%= f.label :severity %><br>
-    <%= f.select :severity, ['low', 'mid', 'high'] %>
+    <%= f.select :severity, Ticket.severities.keys, include_blank: '' %>
   </div>
   <div class="field">
     <%= f.label "Assign to" %><br>
-    <%= f.select :user_id,  User.all.collect {|select_user| [select_user.name, select_user.id]} %>
+    <%= f.select :assigned_user,  User.all.collect {|select_user| [select_user.name]}, include_blank: '' %>
+  </div>
+  <div class="field">
+    <%= f.label :state %><br>
+    <%= f.select :state, Ticket.states.keys, include_blank: '' %>
   </div>
   <div class="actions">
     <%= f.submit %>

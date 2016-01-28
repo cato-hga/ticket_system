@@ -1,29 +1,52 @@
-<p id="notice"><%= notice %></p>
+
 
 <h1>Listing Tickets</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Title</th>
       <th>Description</th>
       <th>Severity</th>
       <th>User</th>
+      <th>State</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @tickets.each do |ticket| %>
-      <tr>
-        <td><%= ticket.title %></td>
-        <td><%= ticket.description %></td>
-        <td><%= ticket.severity %></td>
-        <td><%= ticket.user.name %></td>
-        <td><%= link_to 'Show', ticket %></td>
-        <td><%= link_to 'Edit', edit_ticket_path(ticket) %></td>
-        <td><%= link_to 'Destroy', ticket, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <tr>
+      <td><%= ticket.title %></td>
+      <td><%= ticket.description %></td>
+      <td><%= ticket.severity %></td>
+      <td><%= ticket.assigned_user %></td>
+      <td><%= ticket.state %></td>
+      <td>
+        <button>
+          <span class= "glyphicon glyphicon-search" >
+            <%= link_to 'Show', ticket %>
+          </span>
+        </button>
+      </td>
+      <% if current_user && (ticket.user == current_user) %>
+      <td>
+        <button>
+          <span class="glyphicon glyphicon-search" aria-hidden="true">
+            <%= link_to 'Edit', edit_ticket_path(ticket) %>
+          </span>
+        </button>
+      </td>
+
+      <td>
+        <button>
+          <span class ="glyphicon glyphicon-remove">
+            <%= link_to 'Destroy', ticket, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </span>
+        </button>
+      </td>
+      <% end %>
+    </tr>
     <% end %>
   </tbody>
 </table>

@@ -1,5 +1,6 @@
 class TicketsController < ApplicationController
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
+  #before_action :correct_user, only: [:edit, :destroy]
   before_action :authenticate_user!
 
   # GET /tickets
@@ -26,6 +27,7 @@ class TicketsController < ApplicationController
   # POST /tickets.json
   def create
     @ticket = Ticket.new(ticket_params)
+    @ticket.user_id = current_user.id
 
     respond_to do |format|
       if @ticket.save
@@ -62,7 +64,7 @@ class TicketsController < ApplicationController
     end
   end
 
-  
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -70,8 +72,13 @@ class TicketsController < ApplicationController
       @ticket = Ticket.find(params[:id])
     end
 
+    #def correct_user
+    #  @ticket = current_user.tickets.find_by(params[:id])
+    #  redirect_to tickets_path, notice: "You are not authorized to edit this ticket" if @ticket.nil?
+  #end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def ticket_params
-      params.require(:ticket).permit(:title, :description, :severity, :user_id)
+      params.require(:ticket).permit(:title, :description, :severity, :assigned_user, :state)
     end
 end
