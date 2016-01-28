@@ -16,3 +16,18 @@
   {
 font-family: 'Roboto Slab', serif;
 }
+
+li#sessionUser {
+  margin-top: 17px;
+  font-weight: bold;
+
+}
+
+li#sessionSignOut {
+  font-weight: bold;
+}
+
+.navbar-default .navbar-nav>li#sessionSignOut>a {
+  color: #DC4444; !important;
+
+}

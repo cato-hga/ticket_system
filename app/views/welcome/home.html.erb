@@ -1,2 +1,16 @@
-<h1>Welcome to John's Ticketing System</h1>
-<h4><%= link_to 'Create ticket', new_ticket_path %></h3>
+<center><h1>Welcome to John's Ticketing System</h1></center>
+
+<% if user_signed_in? %>
+<h3>
+  <center>
+    <button type="button" class="btn btn-default">
+      <%= link_to 'Create ticket', new_ticket_path %>
+    </button>
+    <button type="button" class="btn btn-default">
+      <%= link_to 'View all tickets', tickets_path %>
+    </button>
+  </center>
+</h3>
+<% else %>
+
+<% end %>
