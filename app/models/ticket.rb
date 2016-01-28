@@ -16,7 +16,7 @@
 class Ticket < ActiveRecord::Base
   belongs_to :user
 
-  validates :title, :description, :severity, :assigned_user, :state, presence: true
+  validates :title, :description, :severity, :assigned_user, :state, :user_id, presence: true
 
   enum state: [:submitted, :accepted, :assigned]
   enum severity: [:low, :mid, :high]
